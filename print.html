@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Imprimir ZPL</title>
+</head>
+<body>
+  <h1>Imprimir etiqueta Zebra</h1>
+  <button onclick="enviarZPL()">Imprimir Hello World</button>
+
+  <script>
+    function enviarZPL() {
+      // ZPL original
+      const zpl = "^xa^cfa,50^fo100,100^fdHello World^fs^xz";
+      
+      // Codificamos el ZPL para usarlo en una URL
+      const zplEncoded = encodeURIComponent(zpl);
+      
+      // Creamos la URL del intent personalizado
+      const url = `myapp://print?zpl=${zplEncoded}`;
+
+      // Redirigimos a esa URL para que Android lo capture
+      window.location.href = url;
+    }
+  </script>
+</body>
+</html>
