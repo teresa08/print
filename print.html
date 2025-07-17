@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Imprimir ZPL</title>
-</head>
-<body>
-  <h1>Imprimir etiqueta Zebra</h1>
-  <button onclick="enviarZPL()">Imprimir Hello World 3</button>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Imprimir ZPL</title>
+  </head>
+  <body>
+    <h1>Imprimir etiqueta Zebra</h1>
+    <button onclick="enviarZPL()">Imprimir Hello World 02</button>
 
-  <script>
-    function enviarZPL() {
-   
-      const zpls = ["^xa^cfa,50^fo100,100^fdHello World1^fs^xz","^xa^cfa,50^fo100,100^fdHello World 2^fs^xz"]
-      
-      zpls.forEach(element => {
-        
+    <script>
+      function enviarZPL() {
+        const zpls = [
+          "^xa^cfa,50^fo100,100^fdHello World^fs^xz",
+          "^xa^cfa,50^fo100,100^fdHello World 2^fs^xz",
+          "^xa^cfa,50^fo100,100^fdHello 3^fs^xz",
+        ];
 
-      const zplEncoded = encodeURIComponent(element);
-      
-      const url = `myapp://print?zpl=${zplEncoded}`;
+        //const zpl = "^xa^cfa,50^fo100,100^fdHello World^fs^xz";
 
-   
-      window.location.href = url;
+        const zplString = zpls.join("|||");
+        const zplEncoded = encodeURIComponent(zplString);
+        const url = `myapp://print?zpl=${zplEncoded}`;
+        window.location.href = url;
 
-
-
-      });
-      //const zpl = "^xa^cfa,50^fo100,100^fdHello World^fs^xz";
-
-      
-
-    }
-  </script>
-</body>
+        window.location.href = url;
+      }
+    </script>
+  </body>
 </html>
