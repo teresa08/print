@@ -10,17 +10,26 @@
 
   <script>
     function enviarZPL() {
-      // ZPL original
-      const zpl = "^xa^cfa,50^fo100,100^fdHello World^fs^xz";
+   
+      const zpls = ["^xa^cfa,50^fo100,100^fdHello World^fs^xz","^xa^cfa,50^fo100,100^fdHello World 2^fs^xz"]
       
-      // Codificamos el ZPL para usarlo en una URL
-      const zplEncoded = encodeURIComponent(zpl);
+      zpls.forEach(element => {
+        
+
+      const zplEncoded = encodeURIComponent(element);
       
-      // Creamos la URL del intent personalizado
       const url = `myapp://print?zpl=${zplEncoded}`;
 
-      // Redirigimos a esa URL para que Android lo capture
+   
       window.location.href = url;
+
+
+
+      });
+      //const zpl = "^xa^cfa,50^fo100,100^fdHello World^fs^xz";
+
+      
+
     }
   </script>
 </body>
